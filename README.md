@@ -1,4 +1,4 @@
-###Install
+### Install
 ```
   npm install router --save
   or
@@ -6,7 +6,7 @@
 ```
 
 
-###Usage
+### Usage
 1. Router
 ```
   const router = new Router(routes)
