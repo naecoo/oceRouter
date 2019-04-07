@@ -1,8 +1,8 @@
 ### Install
 ```
-  npm install router --save
+  npm install oce-router --save
   or
-  yarn add router
+  yarn add oce-router
 ```
 
 

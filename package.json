@@ -1,5 +1,5 @@
 {
-  "name": "oceRouter",
+  "name": "oce-router",
   "version": "1.0.0",
   "description": "A router library",
   "main": "./dist/index.js",

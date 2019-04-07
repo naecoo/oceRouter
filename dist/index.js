@@ -1,8 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('path-to-regexp')) :
   typeof define === 'function' && define.amd ? define(['path-to-regexp'], factory) :
-  (global.oceRouter = factory(global.pathToRegexp));
-}(this, (function (pathToRegexp) { 'use strict';
+  (global = global || self, global.Router = factory(global.pathToRegexp));
+}(this, function (pathToRegexp) { 'use strict';
 
   pathToRegexp = pathToRegexp && pathToRegexp.hasOwnProperty('default') ? pathToRegexp['default'] : pathToRegexp;
 
@@ -114,5 +114,5 @@
 
   return Router;
 
-})));
+}));
 //# sourceMappingURL=index.js.map

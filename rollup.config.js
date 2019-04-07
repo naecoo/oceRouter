@@ -4,7 +4,7 @@ export default {
   output: {
     file: 'dist/index.js',
     format: 'umd',
-    name: 'oceRouter',
+    name: 'Router',
     sourcemap: true,
     sourcemapFile: './dist/index.js.map'
   }
