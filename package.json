@@ -1,0 +1,19 @@
+{
+  "name": "oceRouter",
+  "version": "1.0.0",
+  "description": "A router library",
+  "main": "./dist/index.js",
+  "repository": "https://github.com/naecoo/oceRouter",
+  "author": "naeco <847185911@qq.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "path-to-regexp": "^3.0.0"
+  },
+  "devDependencies": {
+    "rollup": "^1.9.0"
+  },
+  "scripts": {
+    "build": "rollup -c"
+  }
+}
