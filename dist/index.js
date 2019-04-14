@@ -20,17 +20,21 @@
     return routesMap
   }
 
-  function createHistory () {
-    const history = window.history;
-    return {
-      length: history.length,
-      push: (path, state = null) => history.pushState(path, state),
-      replace: (path, state = null) => history.replaceState(path, state),
-      go: (n) => history.go(n),
-      forward: () => history.go(1),
-      back: () => hisotory.go(-1)
-    }
-  }
+  // export function createHistory () {
+  //   const history = window.history
+  //   return {
+  //     length: history.length,
+  //     push: (path, state = null) => {
+  //       history.pushState(path, state)
+  //     },
+  //     replace: (path, state = null) => {
+  //       history.replaceState(path, state)
+  //     },
+  //     go: (n) => history.go(n),
+  //     forward: () => history.go(1),
+  //     back: () => hisotory.go(-1)
+  //   }
+  // }
 
   function createLocation () {
     const { pathname, search, hash } = window.location;
@@ -80,17 +84,18 @@
     }
   }
 
+  const history = window.history;
   class Router {
     constructor (routes) {
       if (!window || !window.history) {
         throw new Error('we need HTML5 history API support!')
       }
       this.routes = initRoutes(routes);
-      this.observer();
-      window.addEventListener('popstate', this.observer);
+      this.update();
+      window.addEventListener('popstate', this.update.bind(this));
     }
     
-    observer () {
+    update () {
       this.routes.forEach((value, key) => {
         const pathName = getCurrentPathName();
         const options = {
@@ -101,15 +106,33 @@
         };
         const match = matchPath(pathName, options);
         if (!match) return
-        const history = createHistory(), location = createLocation();
-        value['match'](history, location, match);
+        const location = createLocation();
+        value['match'](location, match);
       });
     }
-    
-    dispose () {
-      window.removeEventListener('popstate', this.observer);
+
+    pushState(path, state = null) {
+      history.pushState(state, null, path);
+      this.update();
     }
 
+    replaceState(path, state = null) {
+      history.replaceState(state, null, path);
+      this.update();
+    }
+    
+    go (n) {
+      if (typeof n !== 'number') return 
+      history.go(n);
+    }
+
+    back () {
+      this.go(-1);
+    }
+
+    forward () {
+      this.go(1);
+    }
   }
 
   return Router;

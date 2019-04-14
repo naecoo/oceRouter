@@ -19,7 +19,7 @@
       path: '/foo',                               // match path 
       exact: true,                                // exact mode
       strict: true,                               // strict mode
-      match: (history, match, location) => {...}  // This funciton will be invoked when path match the current pathname
+      match: (match, location) => {...}  // This funciton will be invoked when path match the current pathname
     },
     // This route can match '/bar/*' 
     {
@@ -28,9 +28,10 @@
     }
   ]
 
-  // match function will take 3 parameters
-  // history = {length, push, repalce, go, back, forward}
+  // match function will take 2 parameters
   // location = {pathname, search, hash}
   // match = {path, url, isExact, params}
 
+3. API
+Router.pushState Router.replaceState Router.go Router.forward Router.back
 ```

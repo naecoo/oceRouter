@@ -12,17 +12,21 @@ export function initRoutes (routes = []) {
   return routesMap
 }
 
-export function createHistory () {
-  const history = window.history
-  return {
-    length: history.length,
-    push: (path, state = null) => history.pushState(path, state),
-    replace: (path, state = null) => history.replaceState(path, state),
-    go: (n) => history.go(n),
-    forward: () => history.go(1),
-    back: () => hisotory.go(-1)
-  }
-}
+// export function createHistory () {
+//   const history = window.history
+//   return {
+//     length: history.length,
+//     push: (path, state = null) => {
+//       history.pushState(path, state)
+//     },
+//     replace: (path, state = null) => {
+//       history.replaceState(path, state)
+//     },
+//     go: (n) => history.go(n),
+//     forward: () => history.go(1),
+//     back: () => hisotory.go(-1)
+//   }
+// }
 
 export function createLocation () {
   const { pathname, search, hash } = window.location
